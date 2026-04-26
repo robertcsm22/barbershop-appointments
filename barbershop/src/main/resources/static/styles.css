@@ -1,11 +1,11 @@
 :root {
     --cream: #f5f0e8;
     --ink: #1a1208;
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
+    --gold: #d4a017;
+    --gold-light: #f0c040;
     --rust: #8b3a2a;
     --paper: #ede8dc;
-    --stripe-dark: #2a1f0e;
+    --stripe-dark: #c9a84c;
     --stripe-red: #8b2222;
     --stripe-white: #f0ece0;
     --shadow: rgba(26, 18, 8, 0.18);
@@ -31,7 +31,7 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    padding: 30px 0;      /* menos padding = polo más pequeño */
+    padding: 10px 0;      /* menos padding = polo más pequeño */
     overflow: visible;
 }
 
@@ -66,45 +66,45 @@ body {
 
 .pole .top {
     position: relative;
-    border: 3px solid #222;
+    border: 2px solid #222;
     border-top: 0;
-    width: 52px;
-    top: 3px;
-    height: 6px;
-    border-radius: 6px;
+    width: 38px;
+    top: 2px;
+    height: 4px;
+    border-radius: 4px;
     z-index: 5;
     background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
 }
 
 .pole .top::before {
     position: absolute;
-    width: 55px;
-    height: 6px;
-    top: -9px;
-    left: -5px;
+    width: 40px;
+    height: 4px;
+    top: -6px;
+    left: -4px;
     background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
     border-radius: 3px;
-    border: 3px solid #333;
+    border: 2px solid #333;
     content: '';
 }
 
 .pole .top::after {
     content: '';
-    top: -30px;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    top: -20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border-bottom: 0;
-    width: 47px;
-    height: 18px;
+    width: 34px;
+    height: 12px;
     position: absolute;
-    border: 3px solid #333;
-    background: radial-gradient(30px at 55% 75%, transparent 15%, transparent 50%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 100%);
+    border: 2px solid #333;
+    background: radial-gradient(20px at 55% 75%, transparent 15%, transparent 50%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 100%);
 }
 
 .cilinder {
     margin: auto;
-    height: 100px;
-    width: 45px;
+    height: 70px;
+    width: 35px;
     background: linear-gradient(to right,
     #FFF 0%, #FFF 5%,
     rgba(0, 0, 0, 0.3) 5%, rgba(0, 0, 0, 0.2) 25%,
@@ -126,17 +126,17 @@ body {
 
 @keyframes barber {
     from { background-position-y: 0px; }
-    to   { background-position-y: 100px; }
+    to   { background-position-y: 70px; }
 }
 
 .pole .bottom {
     position: relative;
-    border: 3px solid #333;
+    border: 2px solid #333;
     border-bottom: 0;
-    width: 52px;
-    bottom: 3px;
-    height: 6px;
-    border-radius: 6px;
+    width: 38px;
+    bottom: 2px;
+    height: 4px;
+    border-radius: 4px;
     z-index: 5;
     background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
 }
@@ -144,26 +144,26 @@ body {
 .pole .bottom::before {
     position: absolute;
     content: '';
-    width: 55px;
-    height: 9px;
-    bottom: -12px;
-    left: -5px;
+    width: 40px;
+    height: 6px;
+    bottom: -8px;
+    left: -4px;
     background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
     border-radius: 3px;
-    border: 3px solid #333;
+    border: 2px solid #333;
 }
 
 .pole .bottom::after {
     content: '';
-    bottom: -33px;
+    bottom: -22px;
     border-top: 0;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    width: 47px;
-    height: 18px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 34px;
+    height: 12px;
     position: absolute;
-    border: 3px solid #333;
-    background: radial-gradient(30px at 55% 25%, transparent 15%, transparent 50%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 100%);
+    border: 2px solid #333;
+    background: radial-gradient(20px at 55% 25%, transparent 15%, transparent 50%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 100%);
 }
 
 @keyframes barber {
@@ -179,7 +179,7 @@ body {
 header {
     background: var(--stripe-dark);
     border-bottom: 4px solid var(--gold);
-    padding: 0.5rem 2.5rem 0.5rem 1.5rem;  /* reducir padding */
+    padding: 0.3rem 2.5rem 0.3rem 1.5rem;  /* reducir padding */
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -226,11 +226,11 @@ header {
 .header-text p {
     font-family: 'DM Mono', monospace;
     font-size: 0.75rem;
-    color: var(--gold-light);
+    color: #1a1208;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-top: 0.4rem;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 /* ── LAYOUT ── */
@@ -331,9 +331,9 @@ main {
 .btn-book {
     width: 100%;
     padding: 0.9rem 1.5rem;
-    background: var(--stripe-dark);
-    color: var(--gold);
-    border: 2px solid var(--gold);
+    background: #1a1208;
+    color: #f0c040;
+    border: 2px solid #1a1208;
     border-radius: 4px;
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
@@ -345,8 +345,8 @@ main {
 }
 
 .btn-book:hover {
-    background: var(--gold);
-    color: var(--stripe-dark);
+    background: #f0c040;
+    color: #1a1208;
 }
 
 .btn-book:disabled {
@@ -436,9 +436,9 @@ main {
 
 .btn-filter {
     padding: 0.5rem 1rem;
-    background: var(--stripe-dark);
-    color: var(--gold);
-    border: 1.5px solid var(--gold);
+    background: #1a1208;
+    color: #f0c040;
+    border: 1.5px solid #1a1208;
     border-radius: 4px;
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem;
@@ -449,8 +449,9 @@ main {
 }
 
 .btn-filter:hover {
-    background: var(--gold);
-    color: var(--stripe-dark);
+    background: #f0c040;
+    color: #1a1208;
+    border-color: #1a1208;
 }
 
 .btn-filter.secondary {

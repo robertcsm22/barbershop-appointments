@@ -26,6 +26,15 @@ body {
 }
 
 /* ── BARBER POLE ── */
+.pole {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 30px 0;      /* menos padding = polo más pequeño */
+    overflow: visible;
+}
+
 .default-border {
     border: 4px solid #333;
 }
@@ -43,7 +52,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem;
+    min-width: 110px;
+    overflow: visible;
 }
 
 .pole-top-cap {
@@ -55,48 +66,45 @@ body {
 
 .pole .top {
     position: relative;
-    border: 4px solid #222;
+    border: 3px solid #222;
     border-top: 0;
-    width: 90px;
-    top: 5px;
-    height: 10px;
-    background-color: white;
-    border-radius: 10px;
+    width: 52px;
+    top: 3px;
+    height: 6px;
+    border-radius: 6px;
     z-index: 5;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 15%, transparent 20%, transparent 85%, rgba(0, 0, 0, 0.1) 95%, rgba(0, 0, 0, 0.1) 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
 }
 
 .pole .top::before {
     position: absolute;
-    width: 100px;
-    height: 10px;
-    top: -15px;
-    left: -8px;
-    background-color: white;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 15%, transparent 20%, transparent 85%, rgba(0, 0, 0, 0.1) 95%, rgba(0, 0, 0, 0.1) 100%);
-    border-radius: 5px;
-    border: 4px solid #333;
+    width: 55px;
+    height: 6px;
+    top: -9px;
+    left: -5px;
+    background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
+    border-radius: 3px;
+    border: 3px solid #333;
     content: '';
 }
 
 .pole .top::after {
     content: '';
-    top: -49px;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
+    top: -30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
     border-bottom: 0;
-    background-color: white;
-    width: 80px;
-    height: 30px;
+    width: 47px;
+    height: 18px;
     position: absolute;
-    border: 4px solid #333;
-    background: radial-gradient(50px at 55% 75%, transparent 15%, transparent 50%, rgba(0, 0, 0, 0.1) 65%, rgba(0, 0, 0, 0.1) 100%);
+    border: 3px solid #333;
+    background: radial-gradient(30px at 55% 75%, transparent 15%, transparent 50%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 100%);
 }
 
 .cilinder {
     margin: auto;
-    height: 180px;
-    width: 70px;
+    height: 100px;
+    width: 45px;
     background: linear-gradient(to right,
     #FFF 0%, #FFF 5%,
     rgba(0, 0, 0, 0.3) 5%, rgba(0, 0, 0, 0.2) 25%,
@@ -106,54 +114,56 @@ body {
     rgba(211, 211, 211, 0.1) 80%, rgba(211, 211, 211, 0.1) 95%,
     #FFF 95%, #FFF 100%),
     repeating-linear-gradient(-30deg,
-            #1752d3, #1752d3 25px,
-            white 25px, white 50px,
-            red 50px, red 75px,
-            white 75px, white 100px);
+            #1752d3, #1752d3 15px,
+            white 15px, white 30px,
+            red 30px, red 45px,
+            white 45px, white 60px);
     animation: barber 2.5s linear infinite;
     border: 4px solid #333;
     border-radius: 2px;
     position: relative;
 }
 
+@keyframes barber {
+    from { background-position-y: 0px; }
+    to   { background-position-y: 100px; }
+}
+
 .pole .bottom {
     position: relative;
-    border: 4px solid #333;
+    border: 3px solid #333;
     border-bottom: 0;
-    width: 90px;
-    bottom: 5px;
-    height: 10px;
-    background-color: white;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 15%, transparent 20%, transparent 85%, rgba(0, 0, 0, 0.1) 95%, rgba(0, 0, 0, 0.1) 100%);
-    border-radius: 10px;
+    width: 52px;
+    bottom: 3px;
+    height: 6px;
+    border-radius: 6px;
     z-index: 5;
+    background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
 }
 
 .pole .bottom::before {
     position: absolute;
     content: '';
-    width: 100px;
-    height: 15px;
-    bottom: -20px;
-    left: -8px;
-    background-color: white;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 15%, transparent 20%, transparent 85%, rgba(0, 0, 0, 0.1) 95%, rgba(0, 0, 0, 0.1) 100%);
-    border-radius: 5px;
-    border: 4px solid #333;
+    width: 55px;
+    height: 9px;
+    bottom: -12px;
+    left: -5px;
+    background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
+    border-radius: 3px;
+    border: 3px solid #333;
 }
 
 .pole .bottom::after {
     content: '';
-    bottom: -54px;
+    bottom: -33px;
     border-top: 0;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    background-color: white;
-    width: 80px;
-    height: 30px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    width: 47px;
+    height: 18px;
     position: absolute;
-    border: 4px solid #333;
-    background: radial-gradient(50px at 55% 25%, transparent 15%, transparent 50%, rgba(0, 0, 0, 0.1) 65%, rgba(0, 0, 0, 0.1) 100%);
+    border: 3px solid #333;
+    background: radial-gradient(30px at 55% 25%, transparent 15%, transparent 50%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 100%);
 }
 
 @keyframes barber {
@@ -169,11 +179,12 @@ body {
 header {
     background: var(--stripe-dark);
     border-bottom: 4px solid var(--gold);
-    padding: 1rem 2.5rem 1rem 1.5rem;
+    padding: 0.5rem 2.5rem 0.5rem 1.5rem;  /* reducir padding */
     display: flex;
     align-items: center;
     gap: 1.5rem;
     position: relative;
+    overflow: visible;
 }
 
 .header-text {

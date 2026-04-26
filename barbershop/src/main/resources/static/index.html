@@ -1,715 +1,203 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BarberShop — Reserva tu Cita</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-    <style>
-        :root {
-            --cream: #f5f0e8;
-            --ink: #1a1208;
-            --gold: #c9a84c;
-            --gold-light: #e8c97a;
-            --rust: #8b3a2a;
-            --paper: #ede8dc;
-            --stripe-dark: #2a1f0e;
-            --stripe-red: #8b2222;
-            --stripe-white: #f0ece0;
-            --shadow: rgba(26,18,8,0.18);
-        }
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background-color: var(--cream);
-            color: var(--ink);
-            font-family: 'DM Sans', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ── BARBER POLE ── */
-        @import url(https://fonts.googleapis.com/css?family=Paytone+One);
-
-        .default-border { border: 4px solid #333; }
-
-        .shadow-bg {
-            background: linear-gradient(
-                to right,
-                rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%,
-                transparent 20%, transparent 85%,
-                rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%
-            );
-        }
-
-        .pole-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 0.5rem;
-        }
-
-        .pole-top-cap {
-            width: 80px;
-            height: 30px;
-            position: absolute;
-            border: 4px solid #333;
-        }
-
-        .pole .top {
-            position: relative;
-            border: 4px solid #222;
-            border-top: 0;
-            width: 90px;
-            top: 5px;
-            height: 10px;
-            background-color: white;
-            border-radius: 10px;
-            z-index: 5;
-            background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
-        }
-        .pole .top::before {
-            position: absolute;
-            width: 100px;
-            height: 10px;
-            top: -15px;
-            left: -8px;
-            background-color: white;
-            background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
-            border-radius: 5px;
-            border: 4px solid #333;
-            content: '';
-        }
-        .pole .top::after {
-            content: '';
-            top: -49px;
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
-            border-bottom: 0;
-            background-color: white;
-            width: 80px;
-            height: 30px;
-            position: absolute;
-            border: 4px solid #333;
-            background: radial-gradient(50px at 55% 75%, transparent 15%, transparent 50%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 100%);
-        }
-
-        .cilinder {
-            margin: auto;
-            height: 180px;
-            width: 70px;
-            background:
-                linear-gradient(to right,
-                    #FFF 0%, #FFF 5%,
-                    rgba(0,0,0,0.3) 5%, rgba(0,0,0,0.2) 25%,
-                    rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 35%,
-                    rgba(211,211,211,0.1) 45%, rgba(211,211,211,0.1) 60%,
-                    rgba(255,255,255,0.6) 60%, rgba(255,255,255,0.6) 80%,
-                    rgba(211,211,211,0.1) 80%, rgba(211,211,211,0.1) 95%,
-                    #FFF 95%, #FFF 100%),
-                repeating-linear-gradient(-30deg,
-                    #1752d3, #1752d3 25px,
-                    white 25px, white 50px,
-                    red 50px, red 75px,
-                    white 75px, white 100px);
-            animation: barber 2.5s linear infinite;
-            border: 4px solid #333;
-            border-radius: 2px;
-            position: relative;
-        }
-
-        .pole .bottom {
-            position: relative;
-            border: 4px solid #333;
-            border-bottom: 0;
-            width: 90px;
-            bottom: 5px;
-            height: 10px;
-            background-color: white;
-            background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
-            border-radius: 10px;
-            z-index: 5;
-        }
-        .pole .bottom::before {
-            position: absolute;
-            content: '';
-            width: 100px;
-            height: 15px;
-            bottom: -20px;
-            left: -8px;
-            background-color: white;
-            background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 15%, transparent 20%, transparent 85%, rgba(0,0,0,0.1) 95%, rgba(0,0,0,0.1) 100%);
-            border-radius: 5px;
-            border: 4px solid #333;
-        }
-        .pole .bottom::after {
-            content: '';
-            bottom: -54px;
-            border-top: 0;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            background-color: white;
-            width: 80px;
-            height: 30px;
-            position: absolute;
-            border: 4px solid #333;
-            background: radial-gradient(50px at 55% 25%, transparent 15%, transparent 50%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 100%);
-        }
-
-        @keyframes barber {
-            from { background-position-y: 0px; }
-            to   { background-position-y: 180px; }
-        }
-
-        /* ── HEADER ── */
-        header {
-            background: var(--stripe-dark);
-            border-bottom: 4px solid var(--gold);
-            padding: 1rem 2.5rem 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .header-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .header-text h1 {
-            font-family: 'Paytone One', 'Playfair Display', serif;
-            font-size: clamp(1.6rem, 4vw, 2.8rem);
-            font-weight: 900;
-            color: white;
-            letter-spacing: 0.04em;
-            line-height: 1;
-            position: relative;
-            display: inline-block;
-        }
-        .header-text h1::after {
-            content: "The Classic Cut";
-            font-family: 'Paytone One', 'Playfair Display', serif;
-            font-size: clamp(1.6rem, 4vw, 2.8rem);
-            background: -webkit-repeating-linear-gradient(45deg,
-                white 0px, white 10px,
-                #FA5858 10px, #FA5858 20px,
-                white 20px, white 30px,
-                #5882FA 30px, #5882FA 40px);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: absolute;
-            left: 4px;
-            top: 4px;
-            z-index: -1;
-            white-space: nowrap;
-        }
-
-        .header-text p {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--gold-light);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-top: 0.4rem;
-            opacity: 0.8;
-        }
-
-        /* ── LAYOUT ── */
-        main {
-            display: grid;
-            grid-template-columns: 420px 1fr;
-            gap: 0;
-            min-height: calc(100vh - 110px);
-        }
-
-        /* ── SIDEBAR / FORM ── */
-        .sidebar {
-            background: var(--paper);
-            border-right: 3px solid var(--gold);
-            padding: 2.5rem 2rem;
-            position: sticky;
-            top: 0;
-            height: calc(100vh - 110px);
-            overflow-y: auto;
-        }
-        .sidebar-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--stripe-dark);
-            margin-bottom: 0.3rem;
-        }
-        .sidebar-subtitle {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 2rem;
-        }
-        .divider {
-            height: 2px;
-            background: linear-gradient(90deg, var(--gold), transparent);
-            margin-bottom: 2rem;
-        }
-
-        /* Form fields */
-        .field { margin-bottom: 1.2rem; }
-        .field label {
-            display: block;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.68rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--rust);
-            margin-bottom: 0.4rem;
-            font-weight: 500;
-        }
-        .field input {
-            width: 100%;
-            padding: 0.7rem 0.9rem;
-            background: var(--cream);
-            border: 1.5px solid #c8b98a;
-            border-radius: 4px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            color: var(--ink);
-            transition: border-color 0.2s, box-shadow 0.2s;
-            outline: none;
-        }
-        .field input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
-        }
-        .field input.error { border-color: var(--rust); }
-        .field .hint {
-            font-size: 0.72rem;
-            color: #8a7a5a;
-            margin-top: 0.25rem;
-            font-style: italic;
-        }
-        .field .field-error {
-            font-size: 0.72rem;
-            color: var(--rust);
-            margin-top: 0.25rem;
-            font-weight: 500;
-        }
-
-        /* Buttons */
-        .btn-book {
-            width: 100%;
-            padding: 0.9rem 1.5rem;
-            background: var(--stripe-dark);
-            color: var(--gold);
-            border: 2px solid var(--gold);
-            border-radius: 4px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.05rem;
-            font-style: italic;
-            cursor: pointer;
-            transition: all 0.25s;
-            margin-top: 0.5rem;
-            letter-spacing: 0.03em;
-        }
-        .btn-book:hover {
-            background: var(--gold);
-            color: var(--stripe-dark);
-        }
-        .btn-book:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Toast notifications */
-        #toast {
-            margin-top: 1.2rem;
-            padding: 0.8rem 1rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-        #toast.success {
-            background: #e8f5e9;
-            border-left: 4px solid #2e7d32;
-            color: #1b5e20;
-        }
-        #toast.error {
-            background: #fdecea;
-            border-left: 4px solid var(--rust);
-            color: #5c1a0f;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-6px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ── APPOINTMENTS LIST ── */
-        .list-panel {
-            padding: 2.5rem 2.5rem 2.5rem 3rem;
-            overflow-y: auto;
-        }
-        .list-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.3rem;
-        }
-        .list-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--stripe-dark);
-        }
-        .filter-bar {
-            display: flex;
-            gap: 0.6rem;
-            align-items: center;
-            margin-bottom: 2rem;
-            margin-top: 0.6rem;
-        }
-        .filter-bar input {
-            padding: 0.5rem 0.8rem;
-            border: 1.5px solid #c8b98a;
-            border-radius: 4px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.875rem;
-            background: var(--cream);
-            color: var(--ink);
-            outline: none;
-            flex: 1;
-            max-width: 280px;
-            transition: border-color 0.2s;
-        }
-        .filter-bar input:focus { border-color: var(--gold); }
-        .btn-filter {
-            padding: 0.5rem 1rem;
-            background: var(--stripe-dark);
-            color: var(--gold);
-            border: 1.5px solid var(--gold);
-            border-radius: 4px;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .btn-filter:hover { background: var(--gold); color: var(--stripe-dark); }
-        .btn-filter.secondary {
-            background: transparent;
-            border-color: #c8b98a;
-            color: #8a7a5a;
-        }
-        .btn-filter.secondary:hover {
-            background: #c8b98a;
-            color: var(--stripe-dark);
-        }
-
-        /* Appointment cards */
-        #appointments-list { display: flex; flex-direction: column; gap: 1rem; }
-
-        .appt-card {
-            background: white;
-            border: 1.5px solid #ddd5bb;
-            border-radius: 6px;
-            padding: 1.2rem 1.5rem;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 0.5rem 1rem;
-            transition: box-shadow 0.2s, border-color 0.2s;
-            animation: slideIn 0.3s ease;
-        }
-        .appt-card:hover {
-            box-shadow: 0 4px 16px var(--shadow);
-            border-color: var(--gold);
-        }
-        .appt-card.cancelada {
-            opacity: 0.55;
-            background: #f8f5ee;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .appt-info { grid-column: 1; }
-        .appt-actions { grid-column: 2; display: flex; align-items: flex-start; }
-
-        .appt-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--stripe-dark);
-            margin-bottom: 0.2rem;
-        }
-        .appt-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem 1.2rem;
-            margin-top: 0.35rem;
-        }
-        .appt-meta span {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            color: #5a4e38;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        .appt-meta .emoji { font-style: normal; }
-        .badge {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-top: 0.4rem;
-        }
-        .badge.reservada { background: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
-        .badge.cancelada { background: #f5f5f5; color: #757575; border: 1px solid #e0e0e0; }
-
-        .btn-cancel {
-            padding: 0.4rem 0.8rem;
-            background: transparent;
-            border: 1.5px solid #d4a5a5;
-            color: var(--rust);
-            border-radius: 4px;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.67rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .btn-cancel:hover {
-            background: var(--rust);
-            color: white;
-            border-color: var(--rust);
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: #8a7a5a;
-        }
-        .empty-state .emoji { font-size: 3rem; display: block; margin-bottom: 1rem; }
-        .empty-state p { font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em; }
-
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--gold);
-            letter-spacing: 0.1em;
-        }
-
-        /* Responsive */
-        @media (max-width: 860px) {
-            main { grid-template-columns: 1fr; }
-            .sidebar { position: static; height: auto; }
-            header { padding-left: 1rem; }
-            .pole-container { display: none; }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+          rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-    <header>
-        <div class="pole-container">
-            <div class="pole">
-                <div class="top"></div>
-                <div class="cilinder"></div>
-                <div class="bottom"></div>
-            </div>
+<header>
+    <div class="pole-container">
+        <div class="pole">
+            <div class="top"></div>
+            <div class="cilinder"></div>
+            <div class="bottom"></div>
         </div>
-        <div class="header-text">
-            <h1>The Classic Cut</h1>
-            <p>Sistema de Reserva de Citas · Barbero Único</p>
+    </div>
+    <div class="header-text">
+        <h1>The Classic Cut</h1>
+        <p>Sistema de Reserva de Citas · Barbero Único</p>
+    </div>
+</header>
+
+<main>
+    <!-- ── BOOKING FORM ── -->
+    <aside class="sidebar">
+        <div class="sidebar-title">Nueva Reserva</div>
+        <div class="sidebar-subtitle">Reserve su turno</div>
+        <div class="divider"></div>
+
+        <form id="booking-form" novalidate>
+            <div class="field">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" placeholder="Ej: Carlos Rodríguez" autocomplete="name"/>
+                <div class="field-error" id="err-nombre"></div>
+            </div>
+
+            <div class="field">
+                <label for="email">Correo electrónico *</label>
+                <input type="email" id="email" placeholder="carlos@ejemplo.com" autocomplete="email"/>
+                <div class="field-error" id="err-email"></div>
+            </div>
+
+            <div class="field">
+                <label for="telefono">Teléfono (opcional)</label>
+                <input type="tel" id="telefono" placeholder="+506 8888-8888" autocomplete="tel"/>
+            </div>
+
+            <div class="field">
+                <label for="fechaHora">Fecha y hora *</label>
+                <input type="datetime-local" id="fechaHora"/>
+                <div class="field-error" id="err-fecha"></div>
+                <div class="hint">Debe ser una fecha futura</div>
+            </div>
+
+            <div class="field">
+                <label for="duracion">Duración (minutos)</label>
+                <input type="number" id="duracion" placeholder="30 (por defecto)" min="10" max="180" step="5"/>
+                <div class="hint">Si no se especifica, se usarán 30 minutos</div>
+            </div>
+
+            <button type="submit" class="btn-book" id="btn-submit">
+                ✂ Reservar Cita
+            </button>
+
+            <div id="toast"></div>
+        </form>
+    </aside>
+
+    <!-- ── APPOINTMENTS LIST ── -->
+    <section class="list-panel">
+        <div class="list-header">
+            <h2>Citas Agendadas</h2>
         </div>
-    </header>
 
-    <main>
-        <!-- ── BOOKING FORM ── -->
-        <aside class="sidebar">
-            <div class="sidebar-title">Nueva Reserva</div>
-            <div class="sidebar-subtitle">Reserve su turno</div>
-            <div class="divider"></div>
+        <div class="filter-bar">
+            <input type="email" id="filter-email" placeholder="Filtrar por email..."/>
+            <button class="btn-filter" id="btn-buscar">Buscar</button>
+            <button class="btn-filter secondary" id="btn-limpiar">Limpiar</button>
+        </div>
 
-            <form id="booking-form" novalidate>
-                <div class="field">
-                    <label for="nombre">Nombre completo *</label>
-                    <input type="text" id="nombre" placeholder="Ej: Carlos Rodríguez" autocomplete="name" />
-                    <div class="field-error" id="err-nombre"></div>
-                </div>
+        <div id="appointments-list">
+            <div class="loading">Cargando citas...</div>
+        </div>
+    </section>
+</main>
 
-                <div class="field">
-                    <label for="email">Correo electrónico *</label>
-                    <input type="email" id="email" placeholder="carlos@ejemplo.com" autocomplete="email" />
-                    <div class="field-error" id="err-email"></div>
-                </div>
+<script>
+    const API = '/api/appointments';
 
-                <div class="field">
-                    <label for="telefono">Teléfono (opcional)</label>
-                    <input type="tel" id="telefono" placeholder="+506 8888-8888" autocomplete="tel" />
-                </div>
+    // ── HELPERS ──────────────────────────────────────────────────────────────
 
-                <div class="field">
-                    <label for="fechaHora">Fecha y hora *</label>
-                    <input type="datetime-local" id="fechaHora" />
-                    <div class="field-error" id="err-fecha"></div>
-                    <div class="hint">Debe ser una fecha futura</div>
-                </div>
+    function fmtDate(iso) {
+        if (!iso) return '—';
+        const d = new Date(iso);
+        return d.toLocaleDateString('es-CR', {weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'})
+            + ' ' + d.toLocaleTimeString('es-CR', {hour: '2-digit', minute: '2-digit'});
+    }
 
-                <div class="field">
-                    <label for="duracion">Duración (minutos)</label>
-                    <input type="number" id="duracion" placeholder="30 (por defecto)" min="10" max="180" step="5" />
-                    <div class="hint">Si no se especifica, se usarán 30 minutos</div>
-                </div>
+    function showToast(msg, type) {
+        const el = document.getElementById('toast');
+        el.textContent = msg;
+        el.className = type;
+        el.style.display = 'block';
+        clearTimeout(el._timer);
+        el._timer = setTimeout(() => {
+            el.style.display = 'none';
+        }, 7000);
+    }
 
-                <button type="submit" class="btn-book" id="btn-submit">
-                    ✂ Reservar Cita
-                </button>
+    function setLoading(btn, loading) {
+        btn.disabled = loading;
+        btn.textContent = loading ? '⏳ Procesando...' : '✂ Reservar Cita';
+    }
 
-                <div id="toast"></div>
-            </form>
-        </aside>
+    function clearErrors() {
+        ['nombre', 'email', 'fecha'].forEach(k => {
+            document.getElementById(`err-${k}`).textContent = '';
+        });
+        ['nombre', 'email', 'fechaHora'].forEach(id => {
+            document.getElementById(id).classList.remove('error');
+        });
+    }
 
-        <!-- ── APPOINTMENTS LIST ── -->
-        <section class="list-panel">
-            <div class="list-header">
-                <h2>Citas Agendadas</h2>
-            </div>
+    function showFieldError(id, errId, msg) {
+        document.getElementById(id).classList.add('error');
+        document.getElementById(errId).textContent = msg;
+    }
 
-            <div class="filter-bar">
-                <input type="email" id="filter-email" placeholder="Filtrar por email..." />
-                <button class="btn-filter" id="btn-buscar">Buscar</button>
-                <button class="btn-filter secondary" id="btn-limpiar">Limpiar</button>
-            </div>
+    // ── VALIDATION ───────────────────────────────────────────────────────────
 
-            <div id="appointments-list">
-                <div class="loading">Cargando citas...</div>
-            </div>
-        </section>
-    </main>
+    function validate(data) {
+        let valid = true;
+        clearErrors();
 
-    <script>
-        const API = '/api/appointments';
-
-        // ── HELPERS ──────────────────────────────────────────────────────────────
-
-        function fmtDate(iso) {
-            if (!iso) return '—';
-            const d = new Date(iso);
-            return d.toLocaleDateString('es-CR', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' })
-                + ' ' + d.toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit' });
+        if (!data.clienteNombre || data.clienteNombre.trim() === '') {
+            showFieldError('nombre', 'err-nombre', 'El nombre es obligatorio.');
+            valid = false;
         }
 
-        function showToast(msg, type) {
-            const el = document.getElementById('toast');
-            el.textContent = msg;
-            el.className = type;
-            el.style.display = 'block';
-            clearTimeout(el._timer);
-            el._timer = setTimeout(() => { el.style.display = 'none'; }, 7000);
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!data.clienteEmail || !emailRe.test(data.clienteEmail)) {
+            showFieldError('email', 'err-email', 'Ingrese un email válido.');
+            valid = false;
         }
 
-        function setLoading(btn, loading) {
-            btn.disabled = loading;
-            btn.textContent = loading ? '⏳ Procesando...' : '✂ Reservar Cita';
+        if (!data.fechaHora) {
+            showFieldError('fechaHora', 'err-fecha', 'La fecha y hora son obligatorias.');
+            valid = false;
+        } else if (new Date(data.fechaHora) <= new Date()) {
+            showFieldError('fechaHora', 'err-fecha', 'La fecha y hora deben ser en el futuro.');
+            valid = false;
         }
 
-        function clearErrors() {
-            ['nombre', 'email', 'fecha'].forEach(k => {
-                document.getElementById(`err-${k}`).textContent = '';
-            });
-            ['nombre', 'email', 'fechaHora'].forEach(id => {
-                document.getElementById(id).classList.remove('error');
-            });
+        return valid;
+    }
+
+    // ── LOAD APPOINTMENTS ─────────────────────────────────────────────────────
+
+    async function loadAppointments(emailFilter) {
+        const container = document.getElementById('appointments-list');
+        container.innerHTML = '<div class="loading">Cargando citas...</div>';
+
+        try {
+            const url = emailFilter ? `${API}?clienteEmail=${encodeURIComponent(emailFilter)}` : API;
+            const res = await fetch(url);
+
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+            const appointments = await res.json();
+            renderAppointments(appointments);
+        } catch (err) {
+            container.innerHTML = `<div class="empty-state"><span class="emoji">⚠️</span><p>Error al cargar las citas: ${err.message}</p></div>`;
         }
+    }
 
-        function showFieldError(id, errId, msg) {
-            document.getElementById(id).classList.add('error');
-            document.getElementById(errId).textContent = msg;
-        }
+    function renderAppointments(list) {
+        const container = document.getElementById('appointments-list');
 
-        // ── VALIDATION ───────────────────────────────────────────────────────────
-
-        function validate(data) {
-            let valid = true;
-            clearErrors();
-
-            if (!data.clienteNombre || data.clienteNombre.trim() === '') {
-                showFieldError('nombre', 'err-nombre', 'El nombre es obligatorio.');
-                valid = false;
-            }
-
-            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!data.clienteEmail || !emailRe.test(data.clienteEmail)) {
-                showFieldError('email', 'err-email', 'Ingrese un email válido.');
-                valid = false;
-            }
-
-            if (!data.fechaHora) {
-                showFieldError('fechaHora', 'err-fecha', 'La fecha y hora son obligatorias.');
-                valid = false;
-            } else if (new Date(data.fechaHora) <= new Date()) {
-                showFieldError('fechaHora', 'err-fecha', 'La fecha y hora deben ser en el futuro.');
-                valid = false;
-            }
-
-            return valid;
-        }
-
-        // ── LOAD APPOINTMENTS ─────────────────────────────────────────────────────
-
-        async function loadAppointments(emailFilter) {
-            const container = document.getElementById('appointments-list');
-            container.innerHTML = '<div class="loading">Cargando citas...</div>';
-
-            try {
-                const url = emailFilter ? `${API}?clienteEmail=${encodeURIComponent(emailFilter)}` : API;
-                const res = await fetch(url);
-
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-                const appointments = await res.json();
-                renderAppointments(appointments);
-            } catch (err) {
-                container.innerHTML = `<div class="empty-state"><span class="emoji">⚠️</span><p>Error al cargar las citas: ${err.message}</p></div>`;
-            }
-        }
-
-        function renderAppointments(list) {
-            const container = document.getElementById('appointments-list');
-
-            if (!list || list.length === 0) {
-                container.innerHTML = `
+        if (!list || list.length === 0) {
+            container.innerHTML = `
                     <div class="empty-state">
                         <span class="emoji">✂️</span>
                         <p>No hay citas agendadas</p>
                     </div>`;
-                return;
-            }
+            return;
+        }
 
-            // Sort: RESERVADA first, then by date
-            list.sort((a, b) => {
-                if (a.estado === b.estado) return new Date(a.fechaHora) - new Date(b.fechaHora);
-                return a.estado === 'RESERVADA' ? -1 : 1;
-            });
+        // Sort: RESERVADA first, then by date
+        list.sort((a, b) => {
+            if (a.estado === b.estado) return new Date(a.fechaHora) - new Date(b.fechaHora);
+            return a.estado === 'RESERVADA' ? -1 : 1;
+        });
 
-            container.innerHTML = list.map(a => `
+        container.innerHTML = list.map(a => `
                 <div class="appt-card ${a.estado.toLowerCase()}" id="card-${a.id}">
                     <div class="appt-info">
                         <div class="appt-name">${escHtml(a.clienteNombre)}</div>
@@ -730,114 +218,112 @@
                     </div>
                 </div>
             `).join('');
-        }
+    }
 
-        function escHtml(str) {
-            if (!str) return '';
-            return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-        }
+    function escHtml(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 
-        // ── CREATE APPOINTMENT ────────────────────────────────────────────────────
+    // ── CREATE APPOINTMENT ────────────────────────────────────────────────────
 
-        document.getElementById('booking-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('btn-submit');
+    document.getElementById('booking-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('btn-submit');
 
-            const data = {
-                clienteNombre:   document.getElementById('nombre').value.trim(),
-                clienteEmail:    document.getElementById('email').value.trim(),
-                clienteTelefono: document.getElementById('telefono').value.trim() || null,
-                fechaHora:       document.getElementById('fechaHora').value || null,
-                duracionMin:     document.getElementById('duracion').value ? parseInt(document.getElementById('duracion').value) : null,
-            };
+        const data = {
+            clienteNombre: document.getElementById('nombre').value.trim(),
+            clienteEmail: document.getElementById('email').value.trim(),
+            clienteTelefono: document.getElementById('telefono').value.trim() || null,
+            fechaHora: document.getElementById('fechaHora').value || null,
+            duracionMin: document.getElementById('duracion').value ? parseInt(document.getElementById('duracion').value) : null,
+        };
 
-            if (!validate(data)) return;
+        if (!validate(data)) return;
 
-            setLoading(btn, true);
+        setLoading(btn, true);
 
-            try {
-                const res = await fetch(API, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
+        try {
+            const res = await fetch(API, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
 
-                const body = await res.json();
+            const body = await res.json();
 
-                if (res.status === 201) {
-                    showToast(`✅ Cita reservada exitosamente para ${data.clienteNombre} el ${fmtDate(data.fechaHora)}.`, 'success');
-                    document.getElementById('booking-form').reset();
-                    clearErrors();
-                    loadAppointments();
-                } else if (res.status === 409) {
-                    showToast(`⚠️ Conflicto de horario: ${body.mensaje}`, 'error');
-                } else if (res.status === 400) {
-                    const msgs = body.detalles ? body.detalles.join('; ') : body.mensaje;
-                    showToast(`❌ Error de validación: ${msgs}`, 'error');
-                } else {
-                    showToast(`❌ Error inesperado (${res.status}): ${body.mensaje || 'Intente de nuevo.'}`, 'error');
-                }
-            } catch (err) {
-                showToast(`❌ Error de conexión: ${err.message}`, 'error');
-            } finally {
-                setLoading(btn, false);
+            if (res.status === 201) {
+                showToast(`✅ Cita reservada exitosamente para ${data.clienteNombre} el ${fmtDate(data.fechaHora)}.`, 'success');
+                document.getElementById('booking-form').reset();
+                clearErrors();
+                loadAppointments();
+            } else if (res.status === 409) {
+                showToast(`⚠️ Conflicto de horario: ${body.mensaje}`, 'error');
+            } else if (res.status === 400) {
+                const msgs = body.detalles ? body.detalles.join('; ') : body.mensaje;
+                showToast(`❌ Error de validación: ${msgs}`, 'error');
+            } else {
+                showToast(`❌ Error inesperado (${res.status}): ${body.mensaje || 'Intente de nuevo.'}`, 'error');
             }
-        });
-
-        // ── CANCEL APPOINTMENT ────────────────────────────────────────────────────
-
-        async function cancelAppointment(id) {
-            if (!confirm(`¿Seguro que desea cancelar la cita #${id}?`)) return;
-
-            try {
-                const res = await fetch(`${API}/${id}`, { method: 'DELETE' });
-                const body = await res.json();
-
-                if (res.ok) {
-                    // Update card in place
-                    const card = document.getElementById(`card-${id}`);
-                    if (card) {
-                        card.classList.add('cancelada');
-                        card.querySelector('.badge').className = 'badge cancelada';
-                        card.querySelector('.badge').textContent = 'CANCELADA';
-                        const actions = card.querySelector('.appt-actions');
-                        if (actions) actions.innerHTML = '';
-                    }
-                } else if (res.status === 404) {
-                    alert(`No se encontró la cita #${id}.`);
-                    loadAppointments();
-                } else {
-                    alert(`Error al cancelar: ${body.mensaje}`);
-                }
-            } catch (err) {
-                alert(`Error de conexión: ${err.message}`);
-            }
+        } catch (err) {
+            showToast(`❌ Error de conexión: ${err.message}`, 'error');
+        } finally {
+            setLoading(btn, false);
         }
+    });
 
-        // ── FILTER ────────────────────────────────────────────────────────────────
+    // ── CANCEL APPOINTMENT ────────────────────────────────────────────────────
 
-        document.getElementById('btn-buscar').addEventListener('click', () => {
-            const email = document.getElementById('filter-email').value.trim();
-            loadAppointments(email || null);
-        });
+    async function cancelAppointment(id) {
+        if (!confirm(`¿Seguro que desea cancelar la cita #${id}?`)) return;
 
-        document.getElementById('filter-email').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') document.getElementById('btn-buscar').click();
-        });
+        try {
+            const res = await fetch(`${API}/${id}`, {method: 'DELETE'});
+            const body = await res.json();
 
-        document.getElementById('btn-limpiar').addEventListener('click', () => {
-            document.getElementById('filter-email').value = '';
-            loadAppointments();
-        });
+            if (res.ok) {
+                const card = document.getElementById(`card-${id}`);
+                if (card) {
+                    card.classList.add('cancelada');
+                    card.querySelector('.badge').className = 'badge cancelada';
+                    card.querySelector('.badge').textContent = 'CANCELADA';
+                    const actions = card.querySelector('.appt-actions');
+                    if (actions) actions.innerHTML = '';
+                }
+            } else if (res.status === 404) {
+                alert(`No se encontró la cita #${id}.`);
+                loadAppointments();
+            } else {
+                alert(`Error al cancelar: ${body.mensaje}`);
+            }
+        } catch (err) {
+            alert(`Error de conexión: ${err.message}`);
+        }
+    }
 
-        // ── INIT ─────────────────────────────────────────────────────────────────
+    // ── FILTER ────────────────────────────────────────────────────────────────
 
-        // Set minimum datetime to now
-        const now = new Date();
-        now.setMinutes(now.getMinutes() + 5);
-        document.getElementById('fechaHora').min = now.toISOString().slice(0, 16);
+    document.getElementById('btn-buscar').addEventListener('click', () => {
+        const email = document.getElementById('filter-email').value.trim();
+        loadAppointments(email || null);
+    });
 
+    document.getElementById('filter-email').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') document.getElementById('btn-buscar').click();
+    });
+
+    document.getElementById('btn-limpiar').addEventListener('click', () => {
+        document.getElementById('filter-email').value = '';
         loadAppointments();
-    </script>
+    });
+
+    // ── INIT ─────────────────────────────────────────────────────────────────
+
+    const now = new Date();
+    now.setMinutes(now.getMinutes() + 5);
+    document.getElementById('fechaHora').min = now.toISOString().slice(0, 16);
+
+    loadAppointments();
+</script>
 </body>
 </html>

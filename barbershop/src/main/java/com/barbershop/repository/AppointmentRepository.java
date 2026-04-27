@@ -14,24 +14,13 @@ import java.util.Optional;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
-    /**
-     * Finds all appointments, optionally filtered by email.
-     */
     List<Appointment> findByClienteEmail(String clienteEmail);
 
-    /**
-     * Finds RESERVADA appointments that overlap with the given interval.
-     *
-     * Two intervals [A, A+durA) and [B, B+durB) overlap when:
-     *   A < B+durB  AND  B < A+durA
-     *
-     * Excludes a specific appointment ID (useful for future update scenarios).
-     */
     @Query("""
         SELECT a FROM Appointment a
         WHERE a.estado = 'RESERVADA'
           AND a.fechaHora < :fin
-          AND :inicio < FUNCTION('TIMESTAMPADD', MINUTE, a.duracionMin, a.fechaHora)
+          AND :inicio < a.fechaHora
           AND (:excludeId IS NULL OR a.id <> :excludeId)
         """)
     List<Appointment> findOverlapping(

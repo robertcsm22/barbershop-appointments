@@ -2,6 +2,7 @@ package com.barbershop.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "appointments")
@@ -32,6 +33,12 @@ public class Appointment {
     @Column(nullable = false, updatable = false)
     private LocalDateTime creadoEn;
 
+    // ── NUEVO ──
+    @ElementCollection
+    @CollectionTable(name = "appointment_especialidades", joinColumns = @JoinColumn(name = "appointment_id"))
+    @Column(name = "especialidad")
+    private List<String> especialidades;
+
     @PrePersist
     protected void onCreate() {
         this.creadoEn = LocalDateTime.now();
@@ -43,7 +50,7 @@ public class Appointment {
         }
     }
 
-    // Getters and Setters
+    // Getters and Setters existentes
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -67,4 +74,8 @@ public class Appointment {
 
     public LocalDateTime getCreadoEn() { return creadoEn; }
     public void setCreadoEn(LocalDateTime creadoEn) { this.creadoEn = creadoEn; }
+
+    // ── NUEVO getter/setter ──
+    public List<String> getEspecialidades() { return especialidades; }
+    public void setEspecialidades(List<String> especialidades) { this.especialidades = especialidades; }
 }

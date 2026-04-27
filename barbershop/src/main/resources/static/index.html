@@ -499,16 +499,17 @@
         container.innerHTML = list.map(a => `
         <div class="appt-card ${a.estado.toLowerCase()}" id="card-${a.id}">
             <div class="appt-info">
-                <div class="appt-name">${escHtml(a.clienteNombre)}</div>
-                <div class="appt-meta">
-                    <span>✉ ${escHtml(a.clienteEmail)}</span>
-                    ${a.clienteTelefono ? `<span>📞 ${escHtml(a.clienteTelefono)}</span>` : ''}
-                    <span>📅 ${fmtDate(a.fechaHora)}</span>
-                    <span>⏱ ${a.duracionMin} min</span>
-                    <span>🔖 #${a.id}</span>
-                </div>
-                <span class="badge ${a.estado.toLowerCase()}">${a.estado}</span>
-            </div>
+    <div class="appt-name">${escHtml(a.clienteNombre)}</div>
+    <div class="appt-meta">
+        <span>✉ ${escHtml(a.clienteEmail)}</span>
+        ${a.clienteTelefono ? `<span>📞 ${escHtml(a.clienteTelefono)}</span>` : ''}
+        <span>📅 ${fmtDate(a.fechaHora)}</span>
+        <span>⏱ ${a.duracionMin} min</span>
+        <span>🔖 #${a.id}</span>
+        ${a.especialidades && a.especialidades.length > 0 ? `<span>💈 ${a.especialidades.join(', ')}</span>` : ''}
+    </div>
+    <span class="badge ${a.estado.toLowerCase()}">${a.estado}</span>
+</div>
             <div class="appt-actions">
                 ${a.estado === 'RESERVADA' ? `<button class="btn-cancel" onclick="cancelAppointment(${a.id})">Cancelar</button>` : ''}
             </div>

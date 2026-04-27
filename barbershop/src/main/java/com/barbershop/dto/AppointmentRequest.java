@@ -2,6 +2,7 @@ package com.barbershop.dto;
 
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class AppointmentRequest {
 
@@ -21,7 +22,11 @@ public class AppointmentRequest {
     @Positive(message = "La duración debe ser un número positivo")
     private Integer duracionMin;
 
-    // Getters and Setters
+    // ── NUEVO ──
+    @NotEmpty(message = "Debe seleccionar al menos una especialidad")
+    private List<String> especialidades;
+
+    // Getters and Setters existentes
     public String getClienteNombre() { return clienteNombre; }
     public void setClienteNombre(String clienteNombre) { this.clienteNombre = clienteNombre; }
 
@@ -36,4 +41,8 @@ public class AppointmentRequest {
 
     public Integer getDuracionMin() { return duracionMin; }
     public void setDuracionMin(Integer duracionMin) { this.duracionMin = duracionMin; }
+
+    // ── NUEVO getter/setter ──
+    public List<String> getEspecialidades() { return especialidades; }
+    public void setEspecialidades(List<String> especialidades) { this.especialidades = especialidades; }
 }

@@ -30,3 +30,4 @@ public class ErrorResponse {
     public List<String> getDetalles() { return detalles; }
     public LocalDateTime getTimestamp() { return timestamp; }
 }
+

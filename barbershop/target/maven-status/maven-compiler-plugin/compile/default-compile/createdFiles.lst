@@ -1,0 +1,11 @@
+com\barbershop\BarbershopApplication.class
+com\barbershop\dto\ErrorResponse.class
+com\barbershop\exception\AppointmentNotFoundException.class
+com\barbershop\exception\AppointmentConflictException.class
+com\barbershop\exception\GlobalExceptionHandler.class
+com\barbershop\model\Appointment.class
+com\barbershop\dto\AppointmentRequest.class
+com\barbershop\service\AppointmentService.class
+com\barbershop\controller\AppointmentController.class
+com\barbershop\repository\AppointmentRepository.class
+com\barbershop\model\EstadoCita.class

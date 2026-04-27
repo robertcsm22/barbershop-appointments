@@ -5,3 +5,4 @@ public class AppointmentConflictException extends RuntimeException {
         super(message);
     }
 }
+

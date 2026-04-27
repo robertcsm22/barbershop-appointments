@@ -807,3 +807,116 @@ header {
 .check-item:has(input:checked) { background: #c49a2c; color: #fff; border: 2px solid #c49a2c; transform: scale(1.02); }
 .check-item span { width: 100%; font-weight: 500; }
 .check-item:has(input:checked) span { font-weight: bold; }
+
+/* ══════════════════════════════════════
+   DASHBOARD
+══════════════════════════════════════ */
+.dashboard-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
+}
+
+.dash-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    border: 2px solid;
+    background: white;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.dash-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px var(--shadow);
+}
+
+.dash-card.total      { border-color: var(--gold);  background: #fffbf0; }
+.dash-card.activas    { border-color: #4caf50;       background: #f0faf0; }
+.dash-card.canceladas { border-color: var(--rust);   background: #fdf3f1; }
+
+.dash-icon {
+    font-size: 1.8rem;
+    width: 42px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.dash-info { flex: 1; }
+
+.dash-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8a7a5a;
+    margin-bottom: 0.2rem;
+}
+
+.dash-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.dash-card.total      .dash-value { color: var(--stripe-dark); }
+.dash-card.activas    .dash-value { color: #2e7d32; }
+.dash-card.canceladas .dash-value { color: var(--rust); }
+
+.btn-refresh {
+    width: 100%;
+    padding: 0.55rem;
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stripe-dark);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-refresh:hover {
+    background: var(--gold);
+    color: white;
+}
+
+.dash-proximas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+}
+
+.dash-prox-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0.8rem;
+    background: white;
+    border: 1.5px solid #ddd5bb;
+    border-radius: 7px;
+    transition: border-color 0.2s;
+}
+
+.dash-prox-item:hover { border-color: var(--gold); }
+
+.dash-prox-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--stripe-dark);
+}
+
+.dash-prox-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.67rem;
+    color: #8a7a5a;
+    text-align: right;
+}

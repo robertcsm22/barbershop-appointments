@@ -150,16 +150,13 @@
         </div>
         <div class="header-text">
             <h1 id="title">The Classic Cut</h1>
-            <p>Sistema de Reserva de Citas · Barbero Único</p>
         </div>
     </header>
 
     <div class="layout-wrapper">
 
-        <!-- ── SIDEBAR (hover para abrir) ── -->
         <nav class="sidebar-nav" id="sidebarNav">
 
-            <!-- Indicador visual cuando está cerrado -->
             <div class="sidebar-hint">
                 <span class="sidebar-hint-icon">💈</span>
                 <div class="sidebar-hint-dots">
@@ -167,10 +164,8 @@
                 </div>
             </div>
 
-            <!-- Contenido interior -->
             <div class="sidebar-content">
 
-                <!-- Brand -->
                 <div class="sidebar-brand">
                     <div class="sidebar-brand-icon">✂</div>
                     <div>
@@ -179,11 +174,14 @@
                     </div>
                 </div>
 
-                <!-- Tabs de navegación -->
                 <ul class="nav-tabs">
                     <li class="nav-tab active" data-tab="reserva">
                         <span class="nav-icon">✂</span>
                         <span class="nav-label">Reservar Cita</span>
+                    </li>
+                    <li class="nav-tab" data-tab="dashboard">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-label">Dashboard</span>
                     </li>
                     <li class="nav-tab" data-tab="especialidades">
                         <span class="nav-icon">⭐</span>
@@ -223,51 +221,78 @@
                         </div>
                         <div class="field">
                             <label for="duracion">Duración (minutos)</label>
-                            <input type="number" id="duracion" placeholder="30 (por defecto)" min="10" max="180"
-                                   step="5"/>
+                            <input type="number" id="duracion" placeholder="30 (por defecto)" min="10" max="180" step="5"/>
                             <div class="hint">Si no se especifica, se usarán 30 minutos</div>
                         </div>
-
                         <div class="field">
                             <label>Especialidades *</label>
-
                             <div class="checkbox-group">
-
                                 <label class="check-item">
                                     <input type="checkbox" value="Corte Clásico">
                                     <span>Corte Clásico</span>
                                 </label>
-
                                 <label class="check-item">
                                     <input type="checkbox" value="Afeitado con Navaja">
                                     <span>Afeitado con Navaja</span>
                                 </label>
-
                                 <label class="check-item">
                                     <input type="checkbox" value="Corte + Barba">
                                     <span>Corte + Barba</span>
                                 </label>
-
                                 <label class="check-item">
                                     <input type="checkbox" value="Degradado (Fade)">
                                     <span>Degradado (Fade)</span>
                                 </label>
-
                                 <label class="check-item">
                                     <input type="checkbox" value="Corte Infantil">
                                     <span>Corte Infantil</span>
                                 </label>
-
                                 <label class="check-item">
                                     <input type="checkbox" value="Tratamiento Capilar">
                                     <span>Tratamiento Capilar</span>
                                 </label>
-
                             </div>
                         </div>
                         <button type="submit" class="btn-book" id="btn-submit">✂ Reservar Cita</button>
                         <div id="toast"></div>
                     </form>
+                </div>
+
+                <!-- Tab: Dashboard -->
+                <div class="tab-panel" id="tab-dashboard">
+                    <div class="sidebar-title">Dashboard</div>
+                    <div class="sidebar-subtitle">Resumen de citas</div>
+                    <div class="divider"></div>
+                    <div class="dashboard-cards">
+                        <div class="dash-card total">
+                            <div class="dash-icon">📋</div>
+                            <div class="dash-info">
+                                <div class="dash-label">Total de Citas</div>
+                                <div class="dash-value" id="dash-total">—</div>
+                            </div>
+                        </div>
+                        <div class="dash-card activas">
+                            <div class="dash-icon">✅</div>
+                            <div class="dash-info">
+                                <div class="dash-label">Citas Activas</div>
+                                <div class="dash-value" id="dash-activas">—</div>
+                            </div>
+                        </div>
+                        <div class="dash-card canceladas">
+                            <div class="dash-icon">❌</div>
+                            <div class="dash-info">
+                                <div class="dash-label">Canceladas</div>
+                                <div class="dash-value" id="dash-canceladas">—</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-refresh" id="btn-refresh-dash">↻ Actualizar</button>
+
+                    <div class="divider" style="margin-top:1.4rem;"></div>
+                    <div class="sidebar-subtitle" style="margin-top:0.5rem;">Próximas citas activas</div>
+                    <div id="dash-proximas" class="dash-proximas">
+                        <div class="loading">Cargando...</div>
+                    </div>
                 </div>
 
                 <!-- Tab: Especialidades -->
@@ -348,7 +373,7 @@
                         <div class="about-details">
                             <div class="about-detail-item">
                                 <span class="about-detail-icon">📍</span>
-                                <span>Barrio El Carmen, San José, CR</span>
+                                <span>Liberia, Guanacaste, CR</span>
                             </div>
                             <div class="about-detail-item">
                                 <span class="about-detail-icon">🕐</span>
@@ -362,7 +387,7 @@
                     </div>
                 </div>
 
-            </div><!-- fin .sidebar-content -->
+            </div>
         </nav>
 
         <!-- ── CONTENIDO PRINCIPAL ── -->
@@ -380,8 +405,8 @@
             </div>
         </main>
 
-    </div><!-- fin .layout-wrapper -->
-</div><!-- fin #app -->
+    </div>
+</div>
 
 <script>
     // ── LOADER ──────────────────────────────────────────────────────────────────
@@ -403,16 +428,16 @@
 
     document.querySelectorAll('.nav-tab').forEach(tab => {
         tab.addEventListener('click', () => {
-
-            // activar pestañas
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-
             tab.classList.add('active');
             document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-
-            // 🔥 MANTENER SIDEBAR ABIERTO
             sidebar.classList.add('open');
+
+            // Cargar dashboard al entrar
+            if (tab.dataset.tab === 'dashboard') {
+                loadDashboard();
+            }
         });
     });
 
@@ -426,15 +451,20 @@
             + ' ' + d.toLocaleTimeString('es-CR', {hour: '2-digit', minute: '2-digit'});
     }
 
+    function fmtDateShort(iso) {
+        if (!iso) return '—';
+        const d = new Date(iso);
+        return d.toLocaleDateString('es-CR', {day: '2-digit', month: 'short'})
+            + ' · ' + d.toLocaleTimeString('es-CR', {hour: '2-digit', minute: '2-digit'});
+    }
+
     function showToast(msg, type) {
         const el = document.getElementById('toast');
         el.textContent = msg;
         el.className = type;
         el.style.display = 'block';
         clearTimeout(el._timer);
-        el._timer = setTimeout(() => {
-            el.style.display = 'none';
-        }, 7000);
+        el._timer = setTimeout(() => { el.style.display = 'none'; }, 7000);
     }
 
     function setLoading(btn, loading) {
@@ -486,6 +516,53 @@
         }
     }
 
+    // ── DASHBOARD ────────────────────────────────────────────────────────────────
+    async function loadDashboard() {
+        document.getElementById('dash-total').textContent = '…';
+        document.getElementById('dash-activas').textContent = '…';
+        document.getElementById('dash-canceladas').textContent = '…';
+        document.getElementById('dash-proximas').innerHTML = '<div class="loading">Cargando...</div>';
+
+        try {
+            const res = await fetch(API);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const list = await res.json();
+
+            const total = list.length;
+            const activas = list.filter(a => a.estado === 'RESERVADA').length;
+            const canceladas = list.filter(a => a.estado === 'CANCELADA').length;
+
+            document.getElementById('dash-total').textContent = total;
+            document.getElementById('dash-activas').textContent = activas;
+            document.getElementById('dash-canceladas').textContent = canceladas;
+
+            // Próximas citas activas (ordenadas por fecha)
+            const proximas = list
+                .filter(a => a.estado === 'RESERVADA' && new Date(a.fechaHora) >= new Date())
+                .sort((a, b) => new Date(a.fechaHora) - new Date(b.fechaHora))
+                .slice(0, 5);
+
+            const proximasEl = document.getElementById('dash-proximas');
+            if (proximas.length === 0) {
+                proximasEl.innerHTML = '<p style="font-size:0.78rem;color:#8a7a5a;font-family:DM Mono,monospace;">No hay citas próximas.</p>';
+            } else {
+                proximasEl.innerHTML = proximas.map(a => `
+                    <div class="dash-prox-item">
+                        <div class="dash-prox-name">${escHtml(a.clienteNombre)}</div>
+                        <div class="dash-prox-date">${fmtDateShort(a.fechaHora)}</div>
+                    </div>
+                `).join('');
+            }
+        } catch (err) {
+            document.getElementById('dash-total').textContent = '—';
+            document.getElementById('dash-activas').textContent = '—';
+            document.getElementById('dash-canceladas').textContent = '—';
+            document.getElementById('dash-proximas').innerHTML = `<p style="font-size:0.78rem;color:var(--rust);">Error: ${err.message}</p>`;
+        }
+    }
+
+    document.getElementById('btn-refresh-dash').addEventListener('click', loadDashboard);
+
     function renderAppointments(list) {
         const container = document.getElementById('appointments-list');
         if (!list || list.length === 0) {
@@ -499,17 +576,17 @@
         container.innerHTML = list.map(a => `
         <div class="appt-card ${a.estado.toLowerCase()}" id="card-${a.id}">
             <div class="appt-info">
-    <div class="appt-name">${escHtml(a.clienteNombre)}</div>
-    <div class="appt-meta">
-        <span>✉ ${escHtml(a.clienteEmail)}</span>
-        ${a.clienteTelefono ? `<span>📞 ${escHtml(a.clienteTelefono)}</span>` : ''}
-        <span>📅 ${fmtDate(a.fechaHora)}</span>
-        <span>⏱ ${a.duracionMin} min</span>
-        <span>🔖 #${a.id}</span>
-        ${a.especialidades && a.especialidades.length > 0 ? `<span>💈 ${a.especialidades.join(', ')}</span>` : ''}
-    </div>
-    <span class="badge ${a.estado.toLowerCase()}">${a.estado}</span>
-</div>
+                <div class="appt-name">${escHtml(a.clienteNombre)}</div>
+                <div class="appt-meta">
+                    <span>✉ ${escHtml(a.clienteEmail)}</span>
+                    ${a.clienteTelefono ? `<span>📞 ${escHtml(a.clienteTelefono)}</span>` : ''}
+                    <span>📅 ${fmtDate(a.fechaHora)}</span>
+                    <span>⏱ ${a.duracionMin} min</span>
+                    <span>🔖 #${a.id}</span>
+                    ${a.especialidades && a.especialidades.length > 0 ? `<span>💈 ${a.especialidades.join(', ')}</span>` : ''}
+                </div>
+                <span class="badge ${a.estado.toLowerCase()}">${a.estado}</span>
+            </div>
             <div class="appt-actions">
                 ${a.estado === 'RESERVADA' ? `<button class="btn-cancel" onclick="cancelAppointment(${a.id})">Cancelar</button>` : ''}
             </div>
@@ -523,15 +600,11 @@
 
     document.getElementById('booking-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-
         const btn = document.getElementById('btn-submit');
-
-        // 🔥 obtener especialidades seleccionadas
         const especialidades = Array.from(
             document.querySelectorAll('.checkbox-group input:checked')
         ).map(cb => cb.value);
 
-        // 🚨 validación de especialidades
         if (especialidades.length === 0) {
             showToast('Seleccione al menos una especialidad.', 'error');
             return;
@@ -543,15 +616,11 @@
             clienteTelefono: document.getElementById('telefono').value.trim() || null,
             fechaHora: document.getElementById('fechaHora').value || null,
             duracionMin: document.getElementById('duracion').value
-                ? parseInt(document.getElementById('duracion').value)
-                : null,
-
-            // 🔥 AQUÍ VA LO NUEVO
+                ? parseInt(document.getElementById('duracion').value) : null,
             especialidades: especialidades
         };
 
         if (!validate(data)) return;
-
         setLoading(btn, true);
 
         try {
@@ -560,34 +629,23 @@
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
             });
-
             const body = await res.json();
 
             if (res.status === 201) {
                 showToast(`✅ Cita reservada para ${data.clienteNombre} el ${fmtDate(data.fechaHora)}.`, 'success');
-
                 document.getElementById('booking-form').reset();
-
-                // 🔥 limpiar selección visual de checkboxes
-                document.querySelectorAll('.checkbox-group input')
-                    .forEach(cb => cb.checked = false);
-
+                document.querySelectorAll('.checkbox-group input').forEach(cb => cb.checked = false);
                 clearErrors();
                 loadAppointments();
-
             } else if (res.status === 409) {
                 showToast(`⚠️ Conflicto de horario: ${body.mensaje}`, 'error');
-
             } else if (res.status === 400) {
                 showToast(`❌ Validación: ${body.detalles ? body.detalles.join('; ') : body.mensaje}`, 'error');
-
             } else {
                 showToast(`❌ Error (${res.status}): ${body.mensaje || 'Intente de nuevo.'}`, 'error');
             }
-
         } catch (err) {
             showToast(`❌ Error de conexión: ${err.message}`, 'error');
-
         } finally {
             setLoading(btn, false);
         }
@@ -629,39 +687,11 @@
         loadAppointments();
     });
 
-    // Establecer fecha mínima (5 minutos desde ahora)
     const now = new Date();
     now.setMinutes(now.getMinutes() + 5);
     document.getElementById('fechaHora').min = now.toISOString().slice(0, 16);
 
     loadAppointments();
-
-    // ── SELECCIÓN DE ESPECIALIDAD DESDE TARJETAS ──
-    let especialidadSeleccionada = null;
-
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('click', () => {
-
-            // quitar selección previa
-            document.querySelectorAll('.service-card')
-                .forEach(c => c.classList.remove('selected'));
-
-            // marcar la actual
-            card.classList.add('selected');
-
-            // guardar valor
-            especialidadSeleccionada = card.dataset.servicio;
-
-            // pasar valor al select (IMPORTANTE)
-            const select = document.getElementById('especialidad');
-            if (select) {
-                select.value = especialidadSeleccionada;
-            }
-
-            // cambiar automáticamente al formulario
-            document.querySelector('[data-tab="reserva"]').click();
-        });
-    });
 </script>
 
 </body>

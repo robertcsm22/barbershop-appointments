@@ -22,11 +22,10 @@ public class AppointmentRequest {
     @Positive(message = "La duración debe ser un número positivo")
     private Integer duracionMin;
 
-    // ── NUEVO ──
-    @NotEmpty(message = "Debe seleccionar al menos una especialidad")
+    // 🔥 AGREGA ESTO
     private List<String> especialidades;
 
-    // Getters and Setters existentes
+    // Getters and Setters
     public String getClienteNombre() { return clienteNombre; }
     public void setClienteNombre(String clienteNombre) { this.clienteNombre = clienteNombre; }
 
@@ -42,7 +41,12 @@ public class AppointmentRequest {
     public Integer getDuracionMin() { return duracionMin; }
     public void setDuracionMin(Integer duracionMin) { this.duracionMin = duracionMin; }
 
-    // ── NUEVO getter/setter ──
-    public List<String> getEspecialidades() { return especialidades; }
-    public void setEspecialidades(List<String> especialidades) { this.especialidades = especialidades; }
+    // 🔥 CORREGIDO
+    public List<String> getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(List<String> especialidades) {
+        this.especialidades = especialidades;
+    }
 }

@@ -585,6 +585,15 @@ header {
     gap: 0.3rem;
 }
 
+.appt-meta span:last-child {
+    background-color: #c8a84b;
+    color: #1a1a1a;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+}
+
 .badge {
     display: inline-block;
     padding: 0.2rem 0.6rem;

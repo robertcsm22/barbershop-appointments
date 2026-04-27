@@ -1,8 +1,10 @@
 package com.barbershop.model;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.List;
+
 import jakarta.persistence.FetchType;
 
 @Entity
@@ -35,9 +37,9 @@ public class Appointment {
     private LocalDateTime creadoEn;
 
     @ElementCollection(fetch = FetchType.EAGER)
-@CollectionTable(name = "appointment_especialidades", joinColumns = @JoinColumn(name = "appointment_id"))
-@Column(name = "especialidad")
-private List<String> especialidades;
+    @CollectionTable(name = "appointment_especialidades", joinColumns = @JoinColumn(name = "appointment_id"))
+    @Column(name = "especialidad")
+    private List<String> especialidades;
 
     @PrePersist
     protected void onCreate() {
@@ -52,29 +54,69 @@ private List<String> especialidades;
 
     // Getters and Setters
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getClienteNombre() { return clienteNombre; }
-    public void setClienteNombre(String clienteNombre) { this.clienteNombre = clienteNombre; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getClienteEmail() { return clienteEmail; }
-    public void setClienteEmail(String clienteEmail) { this.clienteEmail = clienteEmail; }
+    public String getClienteNombre() {
+        return clienteNombre;
+    }
 
-    public String getClienteTelefono() { return clienteTelefono; }
-    public void setClienteTelefono(String clienteTelefono) { this.clienteTelefono = clienteTelefono; }
+    public void setClienteNombre(String clienteNombre) {
+        this.clienteNombre = clienteNombre;
+    }
 
-    public LocalDateTime getFechaHora() { return fechaHora; }
-    public void setFechaHora(LocalDateTime fechaHora) { this.fechaHora = fechaHora; }
+    public String getClienteEmail() {
+        return clienteEmail;
+    }
 
-    public Integer getDuracionMin() { return duracionMin; }
-    public void setDuracionMin(Integer duracionMin) { this.duracionMin = duracionMin; }
+    public void setClienteEmail(String clienteEmail) {
+        this.clienteEmail = clienteEmail;
+    }
 
-    public EstadoCita getEstado() { return estado; }
-    public void setEstado(EstadoCita estado) { this.estado = estado; }
+    public String getClienteTelefono() {
+        return clienteTelefono;
+    }
 
-    public LocalDateTime getCreadoEn() { return creadoEn; }
-    public void setCreadoEn(LocalDateTime creadoEn) { this.creadoEn = creadoEn; }
+    public void setClienteTelefono(String clienteTelefono) {
+        this.clienteTelefono = clienteTelefono;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public Integer getDuracionMin() {
+        return duracionMin;
+    }
+
+    public void setDuracionMin(Integer duracionMin) {
+        this.duracionMin = duracionMin;
+    }
+
+    public EstadoCita getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoCita estado) {
+        this.estado = estado;
+    }
+
+    public LocalDateTime getCreadoEn() {
+        return creadoEn;
+    }
+
+    public void setCreadoEn(LocalDateTime creadoEn) {
+        this.creadoEn = creadoEn;
+    }
 
     // 🔥 GET Y SET NUEVOS
     public List<String> getEspecialidades() {

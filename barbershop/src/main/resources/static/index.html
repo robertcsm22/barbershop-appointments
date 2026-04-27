@@ -6,324 +6,464 @@
     <title>BarberShop — Reserva tu Cita</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
-          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-<header>
-    <div class="pole-container">
-        <div class="pole">
-            <div class="top"></div>
-            <div class="cilinder"></div>
-            <div class="bottom"></div>
+<!-- ── PANTALLA DE CARGA ── -->
+<div id="loader-wrapper">
+    <div class="loader-scene">
+        <div class="loader-cloud loader-cloud-1"></div>
+        <div class="loader-cloud loader-cloud-2"></div>
+        <div class="loader-cloud loader-cloud-3"></div>
+        <div class="loader-cloud loader-cloud-4"></div>
+        <div class="loader-cloud loader-cloud-5"></div>
+        <div class="loader-cloud loader-cloud-6"></div>
+        <div class="loader-flag">
+            <div class="loader-flag-pole-l"></div>
+            <div class="loader-flag-pole-r"></div>
+            <div class="loader-flag-tri-l"></div>
+            <div class="loader-flag-tri-r"></div>
+            <div class="loader-flag-tri-li"></div>
+            <div class="loader-flag-tri-ri"></div>
         </div>
+        <div class="loader-roof-1"></div>
+        <div class="loader-roof-2"></div>
+        <div class="loader-sf">
+            <div class="loader-sf-cornice">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="loader-sf-windows">
+                <div class="loader-win-wrap"><div class="loader-win-frame"><div class="loader-win-glass"><div class="loader-win-curtain-top"></div><div class="loader-win-shutterV"></div><div class="loader-win-curtain-l"></div><div class="loader-win-curtain-r"></div></div><div class="loader-win-sill"></div></div></div>
+                <div class="loader-win-wrap"><div class="loader-win-frame"><div class="loader-win-glass"><div class="loader-win-curtain-top"></div><div class="loader-win-shutterV"></div><div class="loader-win-curtain-l"></div><div class="loader-win-curtain-r"></div></div><div class="loader-win-sill"></div></div></div>
+                <div class="loader-win-wrap"><div class="loader-win-frame"><div class="loader-win-glass"><div class="loader-win-curtain-top"></div><div class="loader-win-shutterV"></div><div class="loader-win-curtain-l"></div><div class="loader-win-curtain-r"></div></div><div class="loader-win-sill"></div></div></div>
+            </div>
+        </div>
+        <div class="loader-ff-roof">
+            <div class="loader-ff-roof-bar"></div>
+            <div class="loader-ff-roof-corn"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="loader-ff">
+            <div class="loader-pole-wrap left"><div class="loader-pole-cap"></div><div class="loader-pole-cyl"></div><div class="loader-pole-cap-b"></div></div>
+            <div class="loader-pole-wrap right"><div class="loader-pole-cap"></div><div class="loader-pole-cyl"></div><div class="loader-pole-cap-b"></div></div>
+            <div class="loader-ff-center">
+                <div class="loader-ff-center-roof"></div>
+                <div class="loader-ff-sections">
+                    <div class="loader-ff-section"><div class="loader-section-header"></div><div class="loader-section-window"><div class="loader-shop-glass"><div class="loader-blinds"></div><div class="loader-shop-letter">barber shop</div></div></div><div class="loader-section-bottom"></div><div class="loader-section-bottom2"></div></div>
+                    <div class="loader-ff-section-mid"><div class="loader-section-header"></div><div style="flex:1;background:#8f4d38;border:2px solid #38030b;position:relative;overflow:hidden;"><div class="loader-door-window"><div class="loader-door-glass"></div><div class="loader-door-knob"></div></div></div></div>
+                    <div class="loader-ff-section"><div class="loader-section-header"></div><div class="loader-section-window"><div class="loader-shop-glass"><div class="loader-blinds"></div><div class="loader-shop-letter">barber shop</div></div></div><div class="loader-section-bottom"></div><div class="loader-section-bottom2"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="loader-ground"><div class="loader-ground-top"></div><div class="loader-ground-mid"></div></div>
     </div>
-    <div class="header-text">
-        <h1>The Classic Cut</h1>
-        <p>Sistema de Reserva de Citas · Barbero Único</p>
-    </div>
-</header>
+    <div class="loader-progress-wrap"><div class="loader-progress-fill"></div></div>
+    <div class="loader-text">Cargando · The Classic Cut</div>
+</div>
 
-<main>
-    <!-- ── BOOKING FORM ── -->
-    <aside class="sidebar">
-        <div class="sidebar-title">Nueva Reserva</div>
-        <div class="sidebar-subtitle">Reserve su turno</div>
-        <div class="divider"></div>
+<!-- ── APP PRINCIPAL ── -->
+<div id="app" style="display:none;">
 
-        <form id="booking-form" novalidate>
-            <div class="field">
-                <label for="nombre">Nombre completo *</label>
-                <input type="text" id="nombre" placeholder="Ej: Carlos Rodríguez" autocomplete="name"/>
-                <div class="field-error" id="err-nombre"></div>
+    <header>
+        <div class="pole-container">
+            <div class="pole">
+                <div class="top"></div>
+                <div class="cilinder"></div>
+                <div class="bottom"></div>
             </div>
-
-            <div class="field">
-                <label for="email">Correo electrónico *</label>
-                <input type="email" id="email" placeholder="carlos@ejemplo.com" autocomplete="email"/>
-                <div class="field-error" id="err-email"></div>
-            </div>
-
-            <div class="field">
-                <label for="telefono">Teléfono (opcional)</label>
-                <input type="tel" id="telefono" placeholder="+506 8888-8888" autocomplete="tel"/>
-            </div>
-
-            <div class="field">
-                <label for="fechaHora">Fecha y hora *</label>
-                <input type="datetime-local" id="fechaHora"/>
-                <div class="field-error" id="err-fecha"></div>
-                <div class="hint">Debe ser una fecha futura</div>
-            </div>
-
-            <div class="field">
-                <label for="duracion">Duración (minutos)</label>
-                <input type="number" id="duracion" placeholder="30 (por defecto)" min="10" max="180" step="5"/>
-                <div class="hint">Si no se especifica, se usarán 30 minutos</div>
-            </div>
-
-            <button type="submit" class="btn-book" id="btn-submit">
-                ✂ Reservar Cita
-            </button>
-
-            <div id="toast"></div>
-        </form>
-    </aside>
-
-    <!-- ── APPOINTMENTS LIST ── -->
-    <section class="list-panel">
-        <div class="list-header">
-            <h2>Citas Agendadas</h2>
         </div>
-
-        <div class="filter-bar">
-            <input type="email" id="filter-email" placeholder="Filtrar por email..."/>
-            <button class="btn-filter" id="btn-buscar">Buscar</button>
-            <button class="btn-filter secondary" id="btn-limpiar">Limpiar</button>
+        <div class="header-text">
+            <h1 id="title">The Classic Cut</h1>
+            <p>Sistema de Reserva de Citas · Barbero Único</p>
         </div>
+    </header>
 
-        <div id="appointments-list">
-            <div class="loading">Cargando citas...</div>
-        </div>
-    </section>
-</main>
+    <div class="layout-wrapper">
 
-<script>
-    const API = '/api/appointments';
+        <!-- ── SIDEBAR (hover para abrir) ── -->
+        <nav class="sidebar-nav" id="sidebarNav">
 
-    // ── HELPERS ──────────────────────────────────────────────────────────────
+            <!-- Indicador visual cuando está cerrado -->
+            <div class="sidebar-hint">
+                <span class="sidebar-hint-icon">💈</span>
+                <div class="sidebar-hint-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
 
-    function fmtDate(iso) {
-        if (!iso) return '—';
-        const d = new Date(iso);
-        return d.toLocaleDateString('es-CR', {weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'})
-            + ' ' + d.toLocaleTimeString('es-CR', {hour: '2-digit', minute: '2-digit'});
-    }
+            <!-- Contenido interior -->
+            <div class="sidebar-content">
 
-    function showToast(msg, type) {
-        const el = document.getElementById('toast');
-        el.textContent = msg;
-        el.className = type;
-        el.style.display = 'block';
-        clearTimeout(el._timer);
-        el._timer = setTimeout(() => {
-            el.style.display = 'none';
-        }, 7000);
-    }
-
-    function setLoading(btn, loading) {
-        btn.disabled = loading;
-        btn.textContent = loading ? '⏳ Procesando...' : '✂ Reservar Cita';
-    }
-
-    function clearErrors() {
-        ['nombre', 'email', 'fecha'].forEach(k => {
-            document.getElementById(`err-${k}`).textContent = '';
-        });
-        ['nombre', 'email', 'fechaHora'].forEach(id => {
-            document.getElementById(id).classList.remove('error');
-        });
-    }
-
-    function showFieldError(id, errId, msg) {
-        document.getElementById(id).classList.add('error');
-        document.getElementById(errId).textContent = msg;
-    }
-
-    // ── VALIDATION ───────────────────────────────────────────────────────────
-
-    function validate(data) {
-        let valid = true;
-        clearErrors();
-
-        if (!data.clienteNombre || data.clienteNombre.trim() === '') {
-            showFieldError('nombre', 'err-nombre', 'El nombre es obligatorio.');
-            valid = false;
-        }
-
-        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!data.clienteEmail || !emailRe.test(data.clienteEmail)) {
-            showFieldError('email', 'err-email', 'Ingrese un email válido.');
-            valid = false;
-        }
-
-        if (!data.fechaHora) {
-            showFieldError('fechaHora', 'err-fecha', 'La fecha y hora son obligatorias.');
-            valid = false;
-        } else if (new Date(data.fechaHora) <= new Date()) {
-            showFieldError('fechaHora', 'err-fecha', 'La fecha y hora deben ser en el futuro.');
-            valid = false;
-        }
-
-        return valid;
-    }
-
-    // ── LOAD APPOINTMENTS ─────────────────────────────────────────────────────
-
-    async function loadAppointments(emailFilter) {
-        const container = document.getElementById('appointments-list');
-        container.innerHTML = '<div class="loading">Cargando citas...</div>';
-
-        try {
-            const url = emailFilter ? `${API}?clienteEmail=${encodeURIComponent(emailFilter)}` : API;
-            const res = await fetch(url);
-
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-            const appointments = await res.json();
-            renderAppointments(appointments);
-        } catch (err) {
-            container.innerHTML = `<div class="empty-state"><span class="emoji">⚠️</span><p>Error al cargar las citas: ${err.message}</p></div>`;
-        }
-    }
-
-    function renderAppointments(list) {
-        const container = document.getElementById('appointments-list');
-
-        if (!list || list.length === 0) {
-            container.innerHTML = `
-                    <div class="empty-state">
-                        <span class="emoji">✂️</span>
-                        <p>No hay citas agendadas</p>
-                    </div>`;
-            return;
-        }
-
-        // Sort: RESERVADA first, then by date
-        list.sort((a, b) => {
-            if (a.estado === b.estado) return new Date(a.fechaHora) - new Date(b.fechaHora);
-            return a.estado === 'RESERVADA' ? -1 : 1;
-        });
-
-        container.innerHTML = list.map(a => `
-                <div class="appt-card ${a.estado.toLowerCase()}" id="card-${a.id}">
-                    <div class="appt-info">
-                        <div class="appt-name">${escHtml(a.clienteNombre)}</div>
-                        <div class="appt-meta">
-                            <span><span class="emoji">✉</span> ${escHtml(a.clienteEmail)}</span>
-                            ${a.clienteTelefono ? `<span><span class="emoji">📞</span> ${escHtml(a.clienteTelefono)}</span>` : ''}
-                            <span><span class="emoji">📅</span> ${fmtDate(a.fechaHora)}</span>
-                            <span><span class="emoji">⏱</span> ${a.duracionMin} min</span>
-                            <span><span class="emoji">🔖</span> #${a.id}</span>
-                        </div>
-                        <span class="badge ${a.estado.toLowerCase()}">${a.estado}</span>
-                    </div>
-                    <div class="appt-actions">
-                        ${a.estado === 'RESERVADA' ? `
-                            <button class="btn-cancel" onclick="cancelAppointment(${a.id})">
-                                Cancelar
-                            </button>` : ''}
+                <!-- Brand -->
+                <div class="sidebar-brand">
+                    <div class="sidebar-brand-icon">✂</div>
+                    <div>
+                        <div class="sidebar-brand-name">The Classic Cut</div>
+                        <div class="sidebar-brand-sub">Barbería · CR</div>
                     </div>
                 </div>
-            `).join('');
+
+                <!-- Tabs de navegación -->
+                <ul class="nav-tabs">
+                    <li class="nav-tab active" data-tab="reserva">
+                        <span class="nav-icon">✂</span>
+                        <span class="nav-label">Reservar Cita</span>
+                    </li>
+                    <li class="nav-tab" data-tab="especialidades">
+                        <span class="nav-icon">⭐</span>
+                        <span class="nav-label">Especialidades</span>
+                    </li>
+                    <li class="nav-tab" data-tab="nosotros">
+                        <span class="nav-icon">ℹ</span>
+                        <span class="nav-label">Sobre Nosotros</span>
+                    </li>
+                </ul>
+
+                <!-- Tab: Reservar -->
+                <div class="tab-panel active" id="tab-reserva">
+                    <div class="sidebar-title">Nueva Reserva</div>
+                    <div class="sidebar-subtitle">Reserve su turno</div>
+                    <div class="divider"></div>
+                    <form id="booking-form" novalidate>
+                        <div class="field">
+                            <label for="nombre">Nombre completo *</label>
+                            <input type="text" id="nombre" placeholder="Ej: Carlos Rodríguez" autocomplete="name"/>
+                            <div class="field-error" id="err-nombre"></div>
+                        </div>
+                        <div class="field">
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" id="email" placeholder="carlos@ejemplo.com" autocomplete="email"/>
+                            <div class="field-error" id="err-email"></div>
+                        </div>
+                        <div class="field">
+                            <label for="telefono">Teléfono (opcional)</label>
+                            <input type="tel" id="telefono" placeholder="+506 8888-8888" autocomplete="tel"/>
+                        </div>
+                        <div class="field">
+                            <label for="fechaHora">Fecha y hora *</label>
+                            <input type="datetime-local" id="fechaHora"/>
+                            <div class="field-error" id="err-fecha"></div>
+                            <div class="hint">Debe ser una fecha futura</div>
+                        </div>
+                        <div class="field">
+                            <label for="duracion">Duración (minutos)</label>
+                            <input type="number" id="duracion" placeholder="30 (por defecto)" min="10" max="180" step="5"/>
+                            <div class="hint">Si no se especifica, se usarán 30 minutos</div>
+                        </div>
+                        <button type="submit" class="btn-book" id="btn-submit">✂ Reservar Cita</button>
+                        <div id="toast"></div>
+                    </form>
+                </div>
+
+                <!-- Tab: Especialidades -->
+                <div class="tab-panel" id="tab-especialidades">
+                    <div class="sidebar-title">Especialidades</div>
+                    <div class="sidebar-subtitle">Nuestros servicios</div>
+                    <div class="divider"></div>
+                    <div class="service-cards">
+                        <div class="service-card">
+                            <div class="service-icon">✂</div>
+                            <div class="service-info">
+                                <div class="service-name">Corte Clásico</div>
+                                <div class="service-desc">Corte tradicional con tijera y peine, acabado impecable.</div>
+                                <div class="service-price">₡4,000</div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🪒</div>
+                            <div class="service-info">
+                                <div class="service-name">Afeitado con Navaja</div>
+                                <div class="service-desc">Afeitado al ras con navaja recta y toalla caliente.</div>
+                                <div class="service-price">₡5,500</div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">💈</div>
+                            <div class="service-info">
+                                <div class="service-name">Corte + Barba</div>
+                                <div class="service-desc">Combinación de corte de cabello y arreglo de barba.</div>
+                                <div class="service-price">₡8,000</div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">✨</div>
+                            <div class="service-info">
+                                <div class="service-name">Degradado (Fade)</div>
+                                <div class="service-desc">Degradado suave a máquina, estilo moderno y limpio.</div>
+                                <div class="service-price">₡5,000</div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">👦</div>
+                            <div class="service-info">
+                                <div class="service-name">Corte Infantil</div>
+                                <div class="service-desc">Para niños hasta 10 años, con paciencia y cuidado.</div>
+                                <div class="service-price">₡3,000</div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">💆</div>
+                            <div class="service-info">
+                                <div class="service-name">Tratamiento Capilar</div>
+                                <div class="service-desc">Hidratación profunda y masaje de cuero cabelludo.</div>
+                                <div class="service-price">₡6,500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Sobre Nosotros -->
+                <div class="tab-panel" id="tab-nosotros">
+                    <div class="sidebar-title">Sobre Nosotros</div>
+                    <div class="sidebar-subtitle">Nuestra historia</div>
+                    <div class="divider"></div>
+                    <div class="about-section">
+                        <div class="about-img-wrap">
+                            <img src="corte.jpeg" alt="Corte en The Classic Cut" class="about-img"/>
+                        </div>
+                        <p class="about-text">
+                            <strong>The Classic Cut</strong> nació en 2010 con una sola misión: devolver el arte del buen corte a cada cliente. Somos una barbería de estilo clásico donde la tradición se mezcla con técnicas modernas.
+                        </p>
+                        <p class="about-text">
+                            Nuestro barbero cuenta con más de 15 años de experiencia. Cada visita es personalizada — no somos una línea de producción, somos artesanos del cabello.
+                        </p>
+                        <div class="about-details">
+                            <div class="about-detail-item">
+                                <span class="about-detail-icon">📍</span>
+                                <span>Barrio El Carmen, San José, CR</span>
+                            </div>
+                            <div class="about-detail-item">
+                                <span class="about-detail-icon">🕐</span>
+                                <span>Lun–Sáb: 8:00 am – 7:00 pm</span>
+                            </div>
+                            <div class="about-detail-item">
+                                <span class="about-detail-icon">📞</span>
+                                <span>+506 8888-1234</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- fin .sidebar-content -->
+        </nav>
+
+        <!-- ── CONTENIDO PRINCIPAL ── -->
+        <main class="main-content">
+            <div class="list-header">
+                <h2>Citas Agendadas</h2>
+            </div>
+            <div class="filter-bar">
+                <input type="email" id="filter-email" placeholder="Filtrar por email..."/>
+                <button class="btn-filter" id="btn-buscar">Buscar</button>
+                <button class="btn-filter secondary" id="btn-limpiar">Limpiar</button>
+            </div>
+            <div id="appointments-list">
+                <div class="loading">Cargando citas...</div>
+            </div>
+        </main>
+
+    </div><!-- fin .layout-wrapper -->
+</div><!-- fin #app -->
+
+<script>
+// ── LOADER ──────────────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+    const loader = document.getElementById('loader-wrapper');
+    const app    = document.getElementById('app');
+    setTimeout(() => {
+        loader.style.transition = 'opacity 0.8s ease';
+        loader.style.opacity    = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+            app.style.display    = 'block';
+        }, 800);
+    }, 2800);
+});
+
+// ── TABS ────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+});
+
+// ── APP ─────────────────────────────────────────────────────────────────────
+const API = '/api/appointments';
+
+function fmtDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    return d.toLocaleDateString('es-CR', {weekday:'short', day:'2-digit', month:'short', year:'numeric'})
+         + ' ' + d.toLocaleTimeString('es-CR', {hour:'2-digit', minute:'2-digit'});
+}
+
+function showToast(msg, type) {
+    const el = document.getElementById('toast');
+    el.textContent   = msg;
+    el.className     = type;
+    el.style.display = 'block';
+    clearTimeout(el._timer);
+    el._timer = setTimeout(() => { el.style.display = 'none'; }, 7000);
+}
+
+function setLoading(btn, loading) {
+    btn.disabled    = loading;
+    btn.textContent = loading ? '⏳ Procesando...' : '✂ Reservar Cita';
+}
+
+function clearErrors() {
+    ['nombre','email','fecha'].forEach(k => document.getElementById(`err-${k}`).textContent = '');
+    ['nombre','email','fechaHora'].forEach(id => document.getElementById(id).classList.remove('error'));
+}
+
+function showFieldError(id, errId, msg) {
+    document.getElementById(id).classList.add('error');
+    document.getElementById(errId).textContent = msg;
+}
+
+function validate(data) {
+    let valid = true;
+    clearErrors();
+    if (!data.clienteNombre || !data.clienteNombre.trim()) {
+        showFieldError('nombre','err-nombre','El nombre es obligatorio.'); valid = false;
     }
-
-    function escHtml(str) {
-        if (!str) return '';
-        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    if (!data.clienteEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.clienteEmail)) {
+        showFieldError('email','err-email','Ingrese un email válido.'); valid = false;
     }
+    if (!data.fechaHora) {
+        showFieldError('fechaHora','err-fecha','La fecha y hora son obligatorias.'); valid = false;
+    } else if (new Date(data.fechaHora) <= new Date()) {
+        showFieldError('fechaHora','err-fecha','La fecha y hora deben ser en el futuro.'); valid = false;
+    }
+    return valid;
+}
 
-    // ── CREATE APPOINTMENT ────────────────────────────────────────────────────
+async function loadAppointments(emailFilter) {
+    const container = document.getElementById('appointments-list');
+    container.innerHTML = '<div class="loading">Cargando citas...</div>';
+    try {
+        const url = emailFilter ? `${API}?clienteEmail=${encodeURIComponent(emailFilter)}` : API;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        renderAppointments(await res.json());
+    } catch (err) {
+        container.innerHTML = `<div class="empty-state"><span class="emoji">⚠️</span><p>Error al cargar: ${err.message}</p></div>`;
+    }
+}
 
-    document.getElementById('booking-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = document.getElementById('btn-submit');
+function renderAppointments(list) {
+    const container = document.getElementById('appointments-list');
+    if (!list || list.length === 0) {
+        container.innerHTML = `<div class="empty-state"><span class="emoji">✂️</span><p>No hay citas agendadas</p></div>`;
+        return;
+    }
+    list.sort((a,b) => {
+        if (a.estado === b.estado) return new Date(a.fechaHora) - new Date(b.fechaHora);
+        return a.estado === 'RESERVADA' ? -1 : 1;
+    });
+    container.innerHTML = list.map(a => `
+        <div class="appt-card ${a.estado.toLowerCase()}" id="card-${a.id}">
+            <div class="appt-info">
+                <div class="appt-name">${escHtml(a.clienteNombre)}</div>
+                <div class="appt-meta">
+                    <span>✉ ${escHtml(a.clienteEmail)}</span>
+                    ${a.clienteTelefono ? `<span>📞 ${escHtml(a.clienteTelefono)}</span>` : ''}
+                    <span>📅 ${fmtDate(a.fechaHora)}</span>
+                    <span>⏱ ${a.duracionMin} min</span>
+                    <span>🔖 #${a.id}</span>
+                </div>
+                <span class="badge ${a.estado.toLowerCase()}">${a.estado}</span>
+            </div>
+            <div class="appt-actions">
+                ${a.estado === 'RESERVADA' ? `<button class="btn-cancel" onclick="cancelAppointment(${a.id})">Cancelar</button>` : ''}
+            </div>
+        </div>`).join('');
+}
 
-        const data = {
-            clienteNombre: document.getElementById('nombre').value.trim(),
-            clienteEmail: document.getElementById('email').value.trim(),
-            clienteTelefono: document.getElementById('telefono').value.trim() || null,
-            fechaHora: document.getElementById('fechaHora').value || null,
-            duracionMin: document.getElementById('duracion').value ? parseInt(document.getElementById('duracion').value) : null,
-        };
+function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
-        if (!validate(data)) return;
-
-        setLoading(btn, true);
-
-        try {
-            const res = await fetch(API, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data)
-            });
-
-            const body = await res.json();
-
-            if (res.status === 201) {
-                showToast(`✅ Cita reservada exitosamente para ${data.clienteNombre} el ${fmtDate(data.fechaHora)}.`, 'success');
-                document.getElementById('booking-form').reset();
-                clearErrors();
-                loadAppointments();
-            } else if (res.status === 409) {
-                showToast(`⚠️ Conflicto de horario: ${body.mensaje}`, 'error');
-            } else if (res.status === 400) {
-                const msgs = body.detalles ? body.detalles.join('; ') : body.mensaje;
-                showToast(`❌ Error de validación: ${msgs}`, 'error');
-            } else {
-                showToast(`❌ Error inesperado (${res.status}): ${body.mensaje || 'Intente de nuevo.'}`, 'error');
-            }
-        } catch (err) {
-            showToast(`❌ Error de conexión: ${err.message}`, 'error');
-        } finally {
-            setLoading(btn, false);
+document.getElementById('booking-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('btn-submit');
+    const data = {
+        clienteNombre:   document.getElementById('nombre').value.trim(),
+        clienteEmail:    document.getElementById('email').value.trim(),
+        clienteTelefono: document.getElementById('telefono').value.trim() || null,
+        fechaHora:       document.getElementById('fechaHora').value || null,
+        duracionMin:     document.getElementById('duracion').value ? parseInt(document.getElementById('duracion').value) : null,
+    };
+    if (!validate(data)) return;
+    setLoading(btn, true);
+    try {
+        const res  = await fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+        const body = await res.json();
+        if (res.status === 201) {
+            showToast(`✅ Cita reservada para ${data.clienteNombre} el ${fmtDate(data.fechaHora)}.`, 'success');
+            document.getElementById('booking-form').reset();
+            clearErrors();
+            loadAppointments();
+        } else if (res.status === 409) {
+            showToast(`⚠️ Conflicto de horario: ${body.mensaje}`, 'error');
+        } else if (res.status === 400) {
+            showToast(`❌ Validación: ${body.detalles ? body.detalles.join('; ') : body.mensaje}`, 'error');
+        } else {
+            showToast(`❌ Error (${res.status}): ${body.mensaje || 'Intente de nuevo.'}`, 'error');
         }
-    });
-
-    // ── CANCEL APPOINTMENT ────────────────────────────────────────────────────
-
-    async function cancelAppointment(id) {
-        if (!confirm(`¿Seguro que desea cancelar la cita #${id}?`)) return;
-
-        try {
-            const res = await fetch(`${API}/${id}`, {method: 'DELETE'});
-            const body = await res.json();
-
-            if (res.ok) {
-                const card = document.getElementById(`card-${id}`);
-                if (card) {
-                    card.classList.add('cancelada');
-                    card.querySelector('.badge').className = 'badge cancelada';
-                    card.querySelector('.badge').textContent = 'CANCELADA';
-                    const actions = card.querySelector('.appt-actions');
-                    if (actions) actions.innerHTML = '';
-                }
-            } else if (res.status === 404) {
-                alert(`No se encontró la cita #${id}.`);
-                loadAppointments();
-            } else {
-                alert(`Error al cancelar: ${body.mensaje}`);
-            }
-        } catch (err) {
-            alert(`Error de conexión: ${err.message}`);
-        }
+    } catch (err) {
+        showToast(`❌ Error de conexión: ${err.message}`, 'error');
+    } finally {
+        setLoading(btn, false);
     }
+});
 
-    // ── FILTER ────────────────────────────────────────────────────────────────
+async function cancelAppointment(id) {
+    if (!confirm(`¿Seguro que desea cancelar la cita #${id}?`)) return;
+    try {
+        const res  = await fetch(`${API}/${id}`, {method:'DELETE'});
+        const body = await res.json();
+        if (res.ok) {
+            const card = document.getElementById(`card-${id}`);
+            if (card) {
+                card.classList.add('cancelada');
+                card.querySelector('.badge').className   = 'badge cancelada';
+                card.querySelector('.badge').textContent = 'CANCELADA';
+                const actions = card.querySelector('.appt-actions');
+                if (actions) actions.innerHTML = '';
+            }
+        } else if (res.status === 404) {
+            alert(`No se encontró la cita #${id}.`); loadAppointments();
+        } else {
+            alert(`Error al cancelar: ${body.mensaje}`);
+        }
+    } catch (err) { alert(`Error de conexión: ${err.message}`); }
+}
 
-    document.getElementById('btn-buscar').addEventListener('click', () => {
-        const email = document.getElementById('filter-email').value.trim();
-        loadAppointments(email || null);
-    });
-
-    document.getElementById('filter-email').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') document.getElementById('btn-buscar').click();
-    });
-
-    document.getElementById('btn-limpiar').addEventListener('click', () => {
-        document.getElementById('filter-email').value = '';
-        loadAppointments();
-    });
-
-    // ── INIT ─────────────────────────────────────────────────────────────────
-
-    const now = new Date();
-    now.setMinutes(now.getMinutes() + 5);
-    document.getElementById('fechaHora').min = now.toISOString().slice(0, 16);
-
+document.getElementById('btn-buscar').addEventListener('click', () => {
+    loadAppointments(document.getElementById('filter-email').value.trim() || null);
+});
+document.getElementById('filter-email').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('btn-buscar').click();
+});
+document.getElementById('btn-limpiar').addEventListener('click', () => {
+    document.getElementById('filter-email').value = '';
     loadAppointments();
+});
+
+// Establecer fecha mínima (5 minutos desde ahora)
+const now = new Date();
+now.setMinutes(now.getMinutes() + 5);
+document.getElementById('fechaHora').min = now.toISOString().slice(0,16);
+
+loadAppointments();
 </script>
+
 </body>
 </html>
